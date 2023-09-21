@@ -72,6 +72,7 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 | gameUrl          | 平台域名：<br/>测试环境：https://papi-stage.gamewinhub.com<br/>生产环境：https://papi.gamewinhub.com |
 | googleClientId   | 谷歌clientid                                                 |
 | stripePublishKey | Stripe支付key                                                |
+| payssionApiKey   | Payssion支付key                                                |
 | paypalClientId   | paypal的clientid<br/>沙盒环境有效，本地测试参数，打包后使用后台设置参数<br/>沙盒环境在Application接口设置 |
 
  
