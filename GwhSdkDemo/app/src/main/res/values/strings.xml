@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GwhSdkDemo</string>
+
+    <string name="facebook_app_id" translatable="false">1481989939308291</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1481989939308291</string>
+    <string name="facebook_client_token" translatable="false">b9f25e2ef842bfb0ab5030cda67a11a4</string>
+</resources>
