@@ -1,10 +1,14 @@
-## GameWinHub安卓sdk接入说明
+## GameWinHub sdk接入说明
 
 
 
 | 修订日期   | **版本** |      | 更新内容                                                     |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
 | 2023-01-11 | V1.0.0   |      | 1.    Paypal支付<br/>2.    Payssion支付  <br/>3.    Facebook登录，谷歌登录，游客登录 |
+
+
+
+[TOC]
 
 
 
@@ -91,7 +95,7 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 
 ### 二、初始化（必接）
 
-详见demo演示工程`com.gamewinhub.sdk_test_demo.MainActivity`内代码示例
+详见demo演示工程`MyApplication`及`MainActivity`内代码示例
 
  
 
@@ -143,7 +147,7 @@ GwhApiFactory.getApi().initLogoutCallback(logoutCallback);
 
 #### 1. 设置用户登录结果监听、发起登录
 
-登录成功时游戏服务器需要拿user_id和token访问sdk服务器，进行登录验证。详见《GameWinHub sdk服务端接口文档》   
+登录成功时游戏服务器需要拿user_id和token访问sdk服务器，进行登录验证。详见[服务端接口-登录验证](#1. 登录验证)
 
 ```JAVA
 //设置用户登录结果监听   
@@ -160,7 +164,7 @@ private GwhLoginResultListener loginCallback = new GwhLoginResultListener() {
         extra_Param =  result.getExtra_param(); //sdk预留的参数信息，发起支付方法时再传给sdk
         Log.W(TAG, "sdk登录成功," + "userid = " + uid + ",token = " + token);
         
-        //游戏在这时需要拿到以上userid和token到sdk服务端验证登录结果(详见《GameWinHub sdk服务端接口文档》）
+        //游戏在这时需要拿到以上userid和token到sdk服务端验证登录结果
         break;
     }
   }
@@ -173,7 +177,7 @@ GwhApiFactory.getApi().startlogin(loginCallback);
 
 #### 2. 设置支付结果监听、设置游戏道具参数发起支付
 
-支付结果应以sdk服务端通知为准，服务端通知规则详见《GameWinHub sdk服务端接口文档》
+支付结果应以sdk服务端通知为准，服务端通知规则详见[服务端接口-支付结果通知](#2. 支付结果通知)
 
 ```JAVA
 //设置sdk支付结果监听
@@ -285,4 +289,79 @@ GwhApiFactory.getApi().exitDialog(activity,  mExitObsv);
         tools:replace="android:allowBackup"> 
 ```
 
+
+
+### 五、服务端接口
+
+#### 1. 登录验证
+
+游戏登陆的token验证(游戏方获取user_id和token后访问)
+
+游戏服务器 --> 平台服务器：
+
+测试环境：https://papi-stage.gamewinhub.com/sdk/login_notify/login_verify
+
+生产环境：https://papi.gamewinhub.com/sdk/login_notify/login_verify
+
  
+
+传值方式 POST(参数格式：json格式)
+
+| 参数    | 类型   | 备注         |
+| ------- | ------ | ------------ |
+| user_id | string | 用户唯一标示 |
+| token   | string | token        |
+
+ 
+
+返回数据例子
+
+```JSON
+{
+    "code":200,
+    "msg":"SUCCESS"
+}
+```
+
+code状态为200时 验证成功; 其它为失败
+
+ 
+
+#### 2. 支付结果通知
+
+平台服务器-->CP服务器
+
+传值方式 POST(参数形式)
+
+| 参数         | 类型   | 备注                                                       |
+| ------------ | ------ | ---------------------------------------------------------- |
+| game_order   | string | 下单时游戏所传透传参数（额外参数下单时拼接，回调原样返回） |
+| out_trade_no | string | 平台方订单                                                 |
+| pay_extra    | string | 平台方透传信息  （默认是平台方域名）                       |
+| pay_status   | int    | 支付结果 固定值1                                           |
+| price        | string | 订单金额 游戏方需验证金额是否和发起订单一致，单位美元      |
+| user_id      | int    | 用户唯一标识  游戏方需验证是否和发起订单一致               |
+| sign         | string | 加密字符串 签名规则如下                                    |
+
+签名规则：
+
+MD5(game_order+out_trade_no+pay_extra+pay_status+price+user_id+KEY)
+
+KEY值：平台方与游戏方协商;
+
+示例: MD5(\*\*\*\*KEY) 
+
+(MD5请按照给出的顺序进行加密)
+
+成功时 游戏方请返回`success`这7个字符 否则视为失败
+
+  
+
+**注意：**
+
+1. 平台只对充值成功的订单进行通知。
+
+2. 平台可能对某个订单重复通知，请勿重复处理；对已经成功处理的订单返回 `success` 避免重复通知。
+
+3. 游戏方接收到平台通知后，在验证签名的基础上还需要对`price`参数进行确认，支付金额是否对应订单的实际金额，防止以较少金额购买游戏货币；需要对`user_id`参数进行确认。
+4. 已经给用户发放过的游戏币订单也请返回成功，但是不要重复给用户发放游戏币。（平台会对成功的订单校验是否成功，可能出现重复回调情况） 
