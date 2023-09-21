@@ -1,14 +1,11 @@
-## GameWinHub sdk接入说明
-
+GameWinHub sdk接入说明
+===========
 
 
 | 修订日期   | **版本** |      | 更新内容                                                     |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
 | 2023-01-11 | V1.0.0   |      | 1.    Paypal支付<br/>2.    Payssion支付  <br/>3.    Facebook登录，谷歌登录，游客登录 |
 
-
-
-[TOC]
 
 
 
@@ -147,7 +144,7 @@ GwhApiFactory.getApi().initLogoutCallback(logoutCallback);
 
 #### 1. 设置用户登录结果监听、发起登录
 
-登录成功时游戏服务器需要拿user_id和token访问sdk服务器，进行登录验证。详见[服务端接口-登录验证](#1-登录验证)
+登录成功时游戏服务器需要拿user_id和token访问sdk服务器，进行登录验证。详见[服务端接口-登录验证](#1-%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81)
 
 ```JAVA
 //设置用户登录结果监听   
@@ -232,7 +229,7 @@ GwhApiFactory.getApi().loginout(activity);
 
  
 
-#### 4**. **设置退出程序结果回调、退出游戏程序
+#### 4. 设置退出程序结果回调、退出游戏程序
 
 ```JAVA
 //退出游戏程序结果监听
@@ -323,7 +320,7 @@ GwhApiFactory.getApi().exitDialog(activity,  mExitObsv);
 }
 ```
 
-code状态为200时 验证成功; 其它为失败
+code状态为200时验证成功; 其它为失败
 
  
 
