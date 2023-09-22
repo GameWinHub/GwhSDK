@@ -4,7 +4,7 @@
     package="com.gamewinhub.sdk.demo">
 
     <application
-        android:name="com.example.gwhsdkdemo.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.GwhSdkDemo"
         tools:targetApi="31">
         <activity
-            android:name="com.example.gwhsdkdemo.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
