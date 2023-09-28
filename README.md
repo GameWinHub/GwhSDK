@@ -12,9 +12,10 @@ GameWinHub sdk接入说明
 研发商提供参数：
 1. 游戏名
 2. 包名
-3. 打包秘钥（sha1）
-4. 当前版本号
-5. 付款成功通知URL（预先给，可后开发）：收到款项之后通知游戏服务器发货，详情见下文服务端接口
+3. 签名指纹（sha1，详见https://support.google.com/cloud/answer/6158849#zippy=%2Cnative-applications%2Candroid）
+4. 签名key hash (28个字符BASE64编码, 详见https://developers.facebook.com/docs/android/getting-started/#create_hash)
+5. 当前版本号
+6. 付款成功通知URL（预先给，可后开发）：收到款项之后通知游戏服务器发货，详情见下文服务端接口
 
 ### 第二步：
 GameWinHub提供（基于第一步的参数）
