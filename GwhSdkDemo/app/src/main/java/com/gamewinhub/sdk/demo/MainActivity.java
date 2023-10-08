@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.gamewinhub.open.GwhApiFactory;
-import com.gamewinhub.open.GwhPayManager;
 import com.gamewinhub.open.callback.GwhLoginResultListener;
 import com.gamewinhub.open.callback.GwhSdkInitListener;
 import com.gamewinhub.open.callback.GwhUserInfo;
@@ -35,14 +34,14 @@ public class MainActivity extends Activity {
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GwhApiFactory.getApi().startLogin(MainActivity.this);
+                GwhApiFactory.startLogin(MainActivity.this);
             }
         });
 
         findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GwhApiFactory.getApi().loginout(MainActivity.this);
+                GwhApiFactory.loginOut(MainActivity.this);
             }
         });
 
@@ -62,7 +61,7 @@ public class MainActivity extends Activity {
                 order.roleLevel = "70";                       //游戏角色等级
                 order.sdk_param = extra_param;  //平台方的预留标识（默认值是平台域名，sdk用户登录成功时获取，不需改动）
                 order.extendInfo = String.valueOf(System.currentTimeMillis());    //游戏方的透传参数，服务端支付回调时原样返回，建议传订单号（当前demo用系统时间模拟订单号，正式接入时请传订单号）
-                GwhPayManager.getInstance().startPay(MainActivity.this, order, new PayCallBack() {
+                GwhApiFactory.startPay(MainActivity.this, order, new PayCallBack() {
                     @Override
                     public void onPaySuccess(String result) {
                         Log.w(TAG, "支付成功");
@@ -86,15 +85,15 @@ public class MainActivity extends Activity {
          * boolean isDebug  日志开关（生产设置为false）
          * GwhSdkInitListener gwhSdkInitListener 初始化SDK完成回调
          * */
-        GwhApiFactory.getApi().init(this, true, new GwhSdkInitListener() {
+        GwhApiFactory.initActivity(this, true, new GwhSdkInitListener() {
             @Override
             public void onInitFinish(int result) {
-                GwhApiFactory.getApi().startLogin(MainActivity.this);
+                GwhApiFactory.startLogin(MainActivity.this);
             }
         });
 
         //2.设置登录回调
-        GwhApiFactory.getApi().setLoginCallback(new GwhLoginResultListener() {
+        GwhApiFactory.setLoginCallback(new GwhLoginResultListener() {
             @Override
             public void onFinish(GwhUserInfo result) {
                 switch (result.getmErrCode()) {
@@ -114,7 +113,7 @@ public class MainActivity extends Activity {
         });
 
         // 3.账号注销监听初始化
-        GwhApiFactory.getApi().initLogoutCallback(new LogoutCallback() {
+        GwhApiFactory.setLogoutCallback(new LogoutCallback() {
             @Override
             public void logoutResult(String result) {
                 if (TextUtils.isEmpty(result)) {
@@ -122,7 +121,7 @@ public class MainActivity extends Activity {
                 }
                 if ("1".equals(result)) {
                     Log.i(TAG, "sdk注销回调：注销成功");
-                    GwhApiFactory.getApi().startLogin(MainActivity.this); //调用登录弹窗
+                    GwhApiFactory.startLogin(MainActivity.this);//调用登录弹窗
                 } else {
                     Log.e(TAG, "sdk注销回调：注销失败");
                 }
@@ -133,6 +132,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        GwhApiFactory.getApi().onActivityResult(requestCode, resultCode, data);
+        GwhApiFactory.onActivityResult(requestCode, resultCode, data);
     }
 }

@@ -1,22 +1,22 @@
--dontskipnonpubliclibraryclassmembers  # ²»ºöÂÔ·Ç¹«¹²µÄ¿âÀà
--dontoptimize                          # ÓÅ»¯²»ÓÅ»¯ÊäÈëµÄÀàÎÄ¼ş
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*     # »ìÏıÊ±Ëù²ÉÓÃµÄËã·¨
--optimizationpasses 5                  # Ö¸¶¨´úÂëµÄÑ¹Ëõ¼¶±ğ
--dontusemixedcaseclassnames            # ÊÇ·ñÊ¹ÓÃ´óĞ¡Ğ´»ìºÏ
--keepattributes *Annotation*           # ±£³Ö×¢½â
--dontpreverify                         # »ìÏıÊ±ÊÇ·ñ×öÔ¤Ğ£Ñé
--verbose                               # »ìÏıÊ±ÊÇ·ñ¼ÇÂ¼ÈÕÖ¾
--ignorewarnings                        # ºöÂÔ¾¯¸æ
+-dontskipnonpubliclibraryclassmembers  # ä¸å¿½ç•¥éå…¬å…±çš„åº“ç±»
+-dontoptimize                          # ä¼˜åŒ–ä¸ä¼˜åŒ–è¾“å…¥çš„ç±»æ–‡ä»¶
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*     # æ··æ·†æ—¶æ‰€é‡‡ç”¨çš„ç®—æ³•
+-optimizationpasses 5                  # æŒ‡å®šä»£ç çš„å‹ç¼©çº§åˆ«
+-dontusemixedcaseclassnames            # æ˜¯å¦ä½¿ç”¨å¤§å°å†™æ··åˆ
+-keepattributes *Annotation*           # ä¿æŒæ³¨è§£
+-dontpreverify                         # æ··æ·†æ—¶æ˜¯å¦åšé¢„æ ¡éªŒ
+-verbose                               # æ··æ·†æ—¶æ˜¯å¦è®°å½•æ—¥å¿—
+-ignorewarnings                        # å¿½ç•¥è­¦å‘Š
 
 
-#±£³ÖÄÄĞ©Àà²»±»»ìÏı
+#ä¿æŒå“ªäº›ç±»ä¸è¢«æ··æ·†
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
 -keep public class * extends android.app.DialogFragment
 -keep public class * extends android.app.Application
 
--keep public class * extends android.support.**   #Èç¹ûÓĞÒıÓÃv4»òÕßv7°ü£¬ĞèÌí¼Ó
+-keep public class * extends android.support.**   #å¦‚æœæœ‰å¼•ç”¨v4æˆ–è€…v7åŒ…ï¼Œéœ€æ·»åŠ 
 -keep public class android.app.** {*; }
 
 
