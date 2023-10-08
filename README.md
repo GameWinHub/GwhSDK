@@ -131,15 +131,16 @@ GwhApiFactory.initApplication(this,  false);
 游戏Activity页面的onCreate()中调用如下方法，执行sdk初始化
 
 ```kotlin
-//设置登录回调
-GwhApiFactory.setLoginCallback(loginCallback);   
 // 1.初始化SDK   
-GwhApiFactory.init(this,  true, new GwhSdkInitListener() {     
+GwhApiFactory.initActivity(this,  true, new GwhSdkInitListener() {     
   @Override     
   public void onInitFinish(int  result) {
   }   
 });
-// 2.账号注销监听初始化
+// 2.设置登录回调
+GwhApiFactory.setLoginCallback(loginCallback);   
+
+// 3.账号注销监听初始化
 GwhApiFactory.initLogoutCallback(logoutCallback);
 ```
 
@@ -221,7 +222,7 @@ order.roleId = "10";             //游戏角色ID
 //order.roleLevel = "70";            //游戏角色等级: 可选
 order.sdk_param = extra_param; //平台方的预留标识（默认值是平台域名，sdk用户登录成功时获取，不需改动）
 order.extendInfo = String.valueOf(System.currentTimeMillis());  //游戏方的透传参数，服务端支付回调时原样返回，建议传订单号（当前demo用系统时间模拟订单号，正式接入时请传订单号）
-GwhApiFactory.pay(activity,  order, payCallback);  
+GwhApiFactory.startPay(activity,  order, payCallback);  
 ```
 
 
