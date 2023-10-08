@@ -121,7 +121,7 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 //Application的onCreate中调用(Paypal需求)，不可在其它方法中。   
 //第一个参数是Application   
 //第二个参数设置Paypal支付环境，true是沙盒 false是上线   
-GwhApiFactory.getApi().initApplication(this,  false);  
+GwhApiFactory.initApplication(this,  false);  
 ```
 
 
@@ -132,15 +132,15 @@ GwhApiFactory.getApi().initApplication(this,  false);
 
 ```kotlin
 //设置登录回调
-GwhApiFactory.getApi().setLoginCallback(loginCallback);   
+GwhApiFactory.setLoginCallback(loginCallback);   
 // 1.初始化SDK   
-GwhApiFactory.getApi().init(this,  true, new GwhSdkInitListener() {     
+GwhApiFactory.init(this,  true, new GwhSdkInitListener() {     
   @Override     
   public void onInitFinish(int  result) {
   }   
 });
 // 2.账号注销监听初始化
-GwhApiFactory.getApi().initLogoutCallback(logoutCallback);
+GwhApiFactory.initLogoutCallback(logoutCallback);
 ```
 
 
@@ -153,7 +153,7 @@ GwhApiFactory.getApi().initLogoutCallback(logoutCallback);
  */
 @Override protected void onActivityResult(int  requestCode, int resultCode, Intent data) {
   super.onActivityResult(requestCode, resultCode, data);
-  GwhApiFactory.getApi().onActivityResult(requestCode, resultCode, data);
+  GwhApiFactory.onActivityResult(requestCode, resultCode, data);
 }
 ```
 
@@ -186,7 +186,7 @@ private GwhLoginResultListener loginCallback = new GwhLoginResultListener() {
   }
 };
 //调用登录弹窗   
-GwhApiFactory.getApi().startlogin(loginCallback);  
+GwhApiFactory.startLogin(loginCallback);  
 ```
 
  
@@ -221,7 +221,7 @@ order.roleId = "10";             //游戏角色ID
 //order.roleLevel = "70";            //游戏角色等级: 可选
 order.sdk_param = extra_param; //平台方的预留标识（默认值是平台域名，sdk用户登录成功时获取，不需改动）
 order.extendInfo = String.valueOf(System.currentTimeMillis());  //游戏方的透传参数，服务端支付回调时原样返回，建议传订单号（当前demo用系统时间模拟订单号，正式接入时请传订单号）
-GwhApiFactory.getApi().pay(activity,  order, payCallback);  
+GwhApiFactory.pay(activity,  order, payCallback);  
 ```
 
 
@@ -235,7 +235,6 @@ private LogoutCallback logoutCallback = new LogoutCallback() {
   public void logoutResult(String  result) {
     if  ("1".equals(result)) {
       Log.i(TAG, "sdk注销回调：注销成功");
-      GwhApiFactory.getApi().stopFloating(activity); //关闭悬浮球
       GwhApiFactory.getApi().startlogin(activity,  loginCallback); //调用登录弹窗
     } else {
       Log.e(TAG, "sdk注销回调：注销失败");
@@ -243,37 +242,7 @@ private LogoutCallback logoutCallback = new LogoutCallback() {
   }
 };
 //sdk注销登录
-GwhApiFactory.getApi().loginout(activity);  
-```
-
- 
-
-#### 4. 设置退出程序结果回调、退出游戏程序
-
-```JAVA
-//退出游戏程序结果监听
-/**
- *退出程序回调接口
- **/
-private IGPExitObsv mExitObsv = new IGPExitObsv() {
-  @Override
-  public void  onExitFinish(GPExitResult exitResult) {
-    switch (exitResult.mResultCode)  {
-      case GPExitResult.GPSDKExitResultCodeError:
-        Log.e(TAG,  "退出回调:调用退出弹窗失败");
-        break;
-      case GPExitResult.GPSDKExitResultCodeExitGame:
-        Log.i(TAG,  "退出回调:点击了退出程序确认弹窗中确定按钮");
-        GwhApiFactory.getApi().stopFloating(activity); //关闭悬浮窗
-        //退出程序
-        finish();
-        System.exit(0);
-        break;
-    }
-  }
-};
-//调用sdk确认退出程序弹窗
-GwhApiFactory.getApi().exitDialog(activity,  mExitObsv);  
+GwhApiFactory.loginOut(activity);  
 ```
 
  
