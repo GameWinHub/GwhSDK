@@ -18,7 +18,7 @@ GameWinHub sdk接入说明
 6. 付款成功通知URL（预先给，可后开发）：收到款项之后通知游戏服务器发货，详情见下文服务端接口
 
 ### 第二步：
-GameWinHub提供（基于第一步的参数）
+The9提供（基于第一步的参数）
 1. gwhgameinfo.json（客户端接入使用，见SDK文档），此文件给2份，一份是沙箱环境（方便测试支付），一份是正式环境，注意文件名始终为gwhgameinfo.json
 2. facebook.xml（客户端接入使用，插入到string.xml，见SDK文档）
 
@@ -81,7 +81,7 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 
 #### 3. 游戏参数文件说明
 
-`gwhgameinfo.json`为游戏参数文件，里面保存着游戏参数信息。对接时将GameWinHub提供的`gwhgameinfo.json`复制到游戏工程的assets目录下，sdk会优先读取assets下的此参数文件。
+`gwhgameinfo.json`为游戏参数文件，里面保存着游戏参数信息。对接时将The9提供的`gwhgameinfo.json`复制到游戏工程的assets目录下，sdk会优先读取assets下的此参数文件。
 
 | **游戏参数名称** | **含义**                                                     |
 | ---------------- | ------------------------------------------------------------ |
@@ -99,7 +99,7 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 
 #### 4. facebook参数设置
 
-在`strings.xml`文件中添加以下参数，替换自己的appid (由GameWinHub提供)
+在`strings.xml`文件中添加以下参数，替换自己的appid (由The9提供)
 
 ```xml
 <string name="facebook_app_id"  translatable="false">1021990672049786</string>
