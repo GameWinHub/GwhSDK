@@ -333,7 +333,7 @@ code状态为200时验证成功; 其它为失败
 
 MD5(game_order+out_trade_no+pay_extra+pay_status+price+user_id+KEY)
 
-KEY值：平台方与游戏方协商;
+KEY值：The9提供
 
 示例: MD5(\*\*\*\*KEY) 
 
