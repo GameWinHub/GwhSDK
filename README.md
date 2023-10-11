@@ -21,6 +21,7 @@ GameWinHub sdk接入说明
 The9提供（基于第一步的参数）
 1. gwhgameinfo.json（客户端接入使用，见SDK文档），此文件给2份，一份是沙箱环境（方便测试支付），一份是正式环境，注意文件名始终为gwhgameinfo.json
 2. facebook.xml（客户端接入使用，插入到string.xml，见SDK文档）
+3. 后端服务密钥(支付通知验签用，见SDK文档支付结果通知)
 
 ### 第三步：
 研发商根据SDK文档做接入工作
@@ -333,7 +334,7 @@ code状态为200时验证成功; 其它为失败
 
 MD5(game_order+out_trade_no+pay_extra+pay_status+price+user_id+KEY)
 
-KEY值：平台方与游戏方协商;
+KEY值：后端服务密钥，The9提供
 
 示例: MD5(\*\*\*\*KEY) 
 
