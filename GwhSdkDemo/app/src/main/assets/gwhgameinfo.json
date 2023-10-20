@@ -10,5 +10,7 @@
   "stripePublishKey": "pk_test_51NcKmAE611hhH2eXTbdWMcMNhhNnunKXTl85m2Fq747e5xwVDn0WA77RCRGSOwEMuX4QrBDvDn8LCYOjYbo1O0eA00yQUSt3r7",
   "payssionApiKey": "sandbox_ed587d077e23ffa8",
   "AdJustAppToken": "huy94hz8jhmo",
+  "AdJustLoginToken": "b14iv6",
+  "AdJustPurchaseToken": "3bftzz",
   "environment": "release or debug"
 }
