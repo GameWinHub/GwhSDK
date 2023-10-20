@@ -95,10 +95,10 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 | stripePublishKey | Stripe支付key                                                |
 | payssionApiKey   | Payssion支付key                                                |
 | paypalClientId   | paypal的clientid<br/>沙盒环境有效，本地测试参数，打包后使用后台设置参数<br/>沙盒环境在Application接口设置 |
-| AdJustAppToken   | 广告跟踪token                                                   ｜
-| AdJustLoginToken | 登录转化代码                                                     ｜
-| AdJustPurchaseToken ｜ 内购成功转化代码                                              ｜
-| environment      | 环境：production生产包；sandbox为测试包                             |
+| AdJustAppToken   | 广告跟踪token                                                   |
+| AdJustLoginToken | 登录转化代码                                                     |
+| AdJustPurchaseToken | 内购成功转化代码                                              |
+| environment      | 打包环境：<br/>production生产包；<br/>sandbox为测试包               |
 
  
 
