@@ -246,14 +246,14 @@ private LogoutCallback logoutCallback = new LogoutCallback() {
   public void logoutResult(String  result) {
     if  ("1".equals(result)) {
       Log.i(TAG, "sdk注销回调：注销成功");
-      GwhApiFactory.getApi().startlogin(activity,  loginCallback); //调用登录弹窗
+      GwhApiFactory.startlogin(activity); //调用登录弹窗
     } else {
       Log.e(TAG, "sdk注销回调：注销失败");
     }
   }
 };
 //sdk注销登录
-GwhApiFactory.loginOut(activity);  
+GwhApiFactory.loginOut();  
 ```
 
  
