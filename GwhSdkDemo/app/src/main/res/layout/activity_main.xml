@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0e0e0"
     android:orientation="vertical">
 
 
@@ -10,43 +9,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/dp_30"
-        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_50"
+        android:layout_marginRight="@dimen/dp_50"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
 
         <Button
             android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_120"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
             android:layout_marginBottom="@dimen/dp_20"
             android:layout_weight="1"
             android:background="@color/blue"
             android:text="登录"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_22" />
+            android:textSize="@dimen/sp_16" />
 
         <Button
             android:id="@+id/pay"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_120"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
             android:layout_marginBottom="@dimen/dp_20"
             android:layout_weight="1"
             android:background="@color/blue"
             android:text="支付"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_22" />
+            android:textSize="@dimen/sp_16" />
 
         <Button
             android:id="@+id/signOut"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_120"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
             android:layout_marginBottom="@dimen/dp_20"
             android:layout_weight="1"
             android:background="@color/blue"
             android:text="注销"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_22" />
+            android:textSize="@dimen/sp_16" />
+
+        <Button
+            android:id="@+id/full"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:text="全屏"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
     </LinearLayout>
 
 </RelativeLayout>

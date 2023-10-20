@@ -119,10 +119,8 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 #### 1. Application接口
 
 ```JAVA
-//Application的onCreate中调用(Paypal需求)，不可在其它方法中。   
-//第一个参数是Application   
-//第二个参数设置Paypal支付环境，true是沙盒 false是上线   
-GwhApiFactory.initApplication(this,  false);  
+//第一个参数是Application上下文环境
+GwhApiFactory.initApplication(this);  
 ```
 
 

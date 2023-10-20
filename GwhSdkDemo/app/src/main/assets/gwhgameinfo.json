@@ -1,11 +1,14 @@
 {
+  "papiHost": "https://papi-stage.gamewinhub.com",
+  "japiHost": "https://japi-stage.gamewinhub.com",
   "gameId": "1",
   "gameName": "海外SDK运营版(安卓版)",
   "gameAppId": "63724AB81BC1753B8",
   "accessKey": "jrQpY5liSZ87Z1Y",
-  "gameUrl": "https://papi-stage.gamewinhub.com",
   "googleClientId": "787268630841-amclllucl4v65gvq6vb1e3ic8ifbd0g9.apps.googleusercontent.com",
   "paypalClientId": "ASk0PcsFrKLhcTkYJgnMxR1wiwCjjDHQYRS3gYdsJqni7GN3JSmwwGAknprlDx6pPTxXKUWpZHrQ4Ocj",
   "stripePublishKey": "pk_test_51NcKmAE611hhH2eXTbdWMcMNhhNnunKXTl85m2Fq747e5xwVDn0WA77RCRGSOwEMuX4QrBDvDn8LCYOjYbo1O0eA00yQUSt3r7",
-  "payssionApiKey": "sandbox_ed587d077e23ffa8"
+  "payssionApiKey": "sandbox_ed587d077e23ffa8",
+  "AdJustAppToken": "huy94hz8jhmo",
+  "environment": "release or debug"
 }

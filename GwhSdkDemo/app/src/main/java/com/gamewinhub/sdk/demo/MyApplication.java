@@ -9,6 +9,6 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        GwhApiFactory.initApplication(this, true);
+        GwhApiFactory.initApplication(this);
     }
 }

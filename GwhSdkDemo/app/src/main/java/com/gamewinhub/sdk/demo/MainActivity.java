@@ -18,6 +18,8 @@ import com.gamewinhub.open.callback.GwhUserInfo;
 import com.gamewinhub.open.callback.LogoutCallback;
 import com.gamewinhub.open.entity.OrderInfo;
 import com.gamewinhub.sdk.callback.PayCallBack;
+import com.gyf.immersionbar.BarHide;
+import com.gyf.immersionbar.ImmersionBar;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
@@ -27,6 +29,10 @@ public class MainActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ImmersionBar.with(MainActivity.this)
+                .fullScreen(true)
+                .hideBar(BarHide.FLAG_HIDE_BAR)
+                .init();
         setContentView(R.layout.activity_main);
 
         initSdk();
@@ -41,7 +47,14 @@ public class MainActivity extends Activity {
         findViewById(R.id.signOut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GwhApiFactory.loginOut(MainActivity.this);
+                GwhApiFactory.loginOut();
+            }
+        });
+
+        findViewById(R.id.full).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImmersionBar.with(MainActivity.this).hideBar(BarHide.FLAG_HIDE_BAR).init();
             }
         });
 
@@ -103,7 +116,7 @@ public class MainActivity extends Activity {
                     case 0:
                         String uid = result.getAccountNo();     //用户id（用户唯一标识）
                         String token = result.getToken();       //用户token
-                        extra_param = result.getExtra_param();  //sdk预留的标识，发起支付方法时再传给sdk
+                        extra_param = result.getExtraParam();  //sdk预留的标识，发起支付方法时再传给sdk
                         Log.w(TAG, "sdk登录成功," + "userid = " + uid + "，token = " + token);
 
                         //游戏在这时需要拿到以上userid和token到sdk服务端验证登录结果（详见《游戏登录支付通知接口文档》）
@@ -116,9 +129,6 @@ public class MainActivity extends Activity {
         GwhApiFactory.setLogoutCallback(new LogoutCallback() {
             @Override
             public void logoutResult(String result) {
-                if (TextUtils.isEmpty(result)) {
-                    return;
-                }
                 if ("1".equals(result)) {
                     Log.i(TAG, "sdk注销回调：注销成功");
                     GwhApiFactory.startLogin(MainActivity.this);//调用登录弹窗
