@@ -90,7 +90,8 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 | gameName         | 游戏名称                                                     |
 | gameAppId        | 游戏Appid                                                    |
 | accessKey        | 访问密钥(access_key，用于SDK初始化参数配置)                  |
-| gameUrl          | 平台域名：<br/>测试环境：https://papi-stage.gamewinhub.com<br/>生产环境：https://papi.gamewinhub.com |
+| papiHost          | 平台域名：<br/>测试环境：https://papi-stage.gamewinhub.com<br/>生产环境：https://papi.gamewinhub.com |
+| japiHost          | API域名：<br/>测试环境：https://japi-stage.gamewinhub.com<br/>生产环境：https://japi.gamewinhub.com |
 | googleClientId   | 谷歌clientid                                                 |
 | stripePublishKey | Stripe支付key                                                |
 | payssionApiKey   | Payssion支付key                                                |
@@ -100,7 +101,6 @@ implementation 'io.github.lucksiege:compress:v3.11.1'
 | AdJustPurchaseToken | 内购成功转化代码                                              |
 | environment      | 打包环境：<br/>production生产包；<br/>sandbox为测试包               |
 
- 
 
 #### 4. facebook参数设置
 
