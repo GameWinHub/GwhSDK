@@ -101,6 +101,7 @@ public class MainActivity extends Activity {
         GwhApiFactory.initActivity(this, true, new GwhSdkInitListener() {
             @Override
             public void onInitFinish(int result) {
+                //初始化成功弹出登录对话框
                 GwhApiFactory.startLogin(MainActivity.this);
             }
         });

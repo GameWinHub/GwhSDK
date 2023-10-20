@@ -67,15 +67,22 @@ implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 implementation 'androidx.appcompat:appcompat:1.5.1'
 implementation "androidx.core:core-ktx:1.5.0"
 implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10"
+implementation 'com.github.bumptech.glide:glide:4.16.0'
+
 
 //第三方框架依赖
-implementation 'com.google.code.gson:gson:2.10.1'                   // gson解析
-implementation 'com.google.android.gms:play-services-auth:20.7.0'   //谷歌登录
-implementation 'com.facebook.android:facebook-login:16.2.0'         //FaceBook
-implementation 'com.paypal.checkout:android-sdk:0.6.1'              //Paypal
-implementation 'com.stripe:stripe-android:20.15.1'                  //Stripe
-implementation 'io.github.lucksiege:pictureselector:v3.11.1'        //pictureselector
-implementation 'io.github.lucksiege:compress:v3.11.1'
+implementation 'com.google.code.gson:gson:2.10.1'                                //gson解析
+implementation 'com.google.android.gms:play-services-auth:20.7.0'                //谷歌登录
+implementation 'com.google.android.gms:play-services-ads:22.4.0'                 //google服务相关
+implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'      //google服务相关
+implementation 'com.google.android.gms:play-services-appset:16.0.2'              //google服务相关
+implementation 'com.facebook.android:facebook-login:16.2.0'                      //FaceBook
+implementation 'com.paypal.checkout:android-sdk:0.6.1'                           //Paypal
+implementation 'com.stripe:stripe-android:20.15.1'                               //Stripe
+implementation 'io.github.lucksiege:pictureselector:v3.11.1'                     //pictureselector
+implementation 'io.github.lucksiege:ucrop:v3.11.1'                               //Ucrop
+implementation 'com.android.installreferrer:installreferrer:2.2'                 //adJust
+implementation 'com.adjust.sdk:adjust-android:4.33.5'                            //adJust
 ```
 
  
@@ -181,7 +188,7 @@ private GwhLoginResultListener loginCallback = new GwhLoginResultListener() {
       case 0:
         String uid =  result.getAccountNo();  //用户id（用户唯一标识）
         String token =  result.getToken();   //用户token
-        extra_Param =  result.getExtra_param(); //sdk预留的参数信息，发起支付方法时再传给sdk
+        extra_Param =  result.getExtraParam(); //sdk预留的参数信息，发起支付方法时再传给sdk
         Log.W(TAG, "sdk登录成功," + "userid = " + uid + ",token = " + token);
         
         //游戏在这时需要拿到以上userid和token到sdk服务端验证登录结果
@@ -190,7 +197,7 @@ private GwhLoginResultListener loginCallback = new GwhLoginResultListener() {
   }
 };
 //调用登录弹窗   
-GwhApiFactory.startLogin(loginCallback);  
+GwhApiFactory.startLogin(context);
 ```
 
  
