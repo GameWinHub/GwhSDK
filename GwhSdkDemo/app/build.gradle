@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.7.0'                //谷歌登录
     implementation 'com.google.android.gms:play-services-ads:22.4.0'                 //google服务相关
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'      //google服务相关
+    implementation 'com.google.android.gms:play-services-ads-lite:22.4.0'            //google服务相关
     implementation 'com.google.android.gms:play-services-appset:16.0.2'              //google服务相关
     implementation 'com.facebook.android:facebook-login:16.2.0'                      //FaceBook
     implementation 'com.paypal.checkout:android-sdk:0.6.1'                           //Paypal
