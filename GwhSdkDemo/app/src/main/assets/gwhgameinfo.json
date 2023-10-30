@@ -12,5 +12,7 @@
   "AdJustAppToken": "huy94hz8jhmo",
   "AdJustLoginToken": "b14iv6",
   "AdJustPurchaseToken": "3bftzz",
+  "ironSourceAppKey": "1bb99f7dd",
+  "ironSourceEnable": true,
   "environment": "release or debug"
 }
